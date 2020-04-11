@@ -1,24 +1,27 @@
 package br.biblioteca.livros.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Authors")
-public class Autor {
+public class Autor implements Serializable {
 
+	private static final long serialVersionUID = -2931921441183751443L;
+	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@Column(name = "name", nullable = false)
 	private String name;
 	
 	@OneToMany(mappedBy = "author")

@@ -1,5 +1,10 @@
 package br.biblioteca.livros.controllers;
 
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,14 +13,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.biblioteca.livros.models.Livro;
+import br.biblioteca.livros.service.LivroService;
 
 @Controller
 @RequestMapping("livros")
 public class LivroController {
 	
+	@Autowired
+	LivroService livroService;
+	
 	@GetMapping("/list")
 	public ModelAndView list() {
-		return new ModelAndView("livro/list");
+		ModelAndView modelAndView = new ModelAndView("livro/list");		
+		List<Livro> livrosLista = livroService.listaTodosLivros();				
+		modelAndView.addObject("livros", livrosLista);
+		
+		return modelAndView;		
 	}
 	
 	@GetMapping("/new")
