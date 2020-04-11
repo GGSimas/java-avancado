@@ -1,1 +1,34 @@
-<h1>Lista de Livros!!!</h1>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  	layout:decorate="layout">
+<head>
+	<meta charset="UTF-8" />
+	<title>Livros</title>
+</head>
+<body>
+<a href="#">Novo</a>
+	<table>
+  		<thead>
+    		<tr>
+      			<th>Id</th>
+      			<th>Nome</th>
+      			<th>Páginas</th>
+      			<th>Autor(s)</th>
+      			<th></th>
+      			<th></th>
+    		</tr>
+  		</thead>
+  		<tbody>
+    		<tr th:each="livro: ${livros}">
+      			<td th:text="${livro.id}"></td>
+      			<td th:text="${livro?.name}"></td>
+      			<td th:text="${livro?.numberPages}"></td>
+      			<td th:text="${livro?.author?.name}"></td>
+      			<td><a href="/edit">Alterar</a></td>
+      			<td><a href="#">Excluir</a></td>
+    		</tr>
+  		</tbody>
+</table>
+</body>
+</html>
