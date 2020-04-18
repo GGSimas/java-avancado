@@ -5,18 +5,22 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Livros</title>
+	
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap-theme.min.css}" />
+	<link rel="stylesheet" th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.css}" />
 </head>
 <body>
-<a href="#">Novo</a>
-	<table>
-  		<thead>
+<a class="btn btn-primary" href="#" th:href="@{/livros/new}">Novo</a>
+	<table class="table">
+  		<thead class="thead-dark">
     		<tr>
-      			<th>Id</th>
-      			<th>Nome</th>
-      			<th>Páginas</th>
-      			<th>Autor(s)</th>
-      			<th></th>
-      			<th></th>
+      			<th scope="col">Id</th>
+      			<th scope="col">Nome</th>
+      			<th scope="col">Páginas</th>
+      			<th scope="col">Autor(s)</th>
+      			<th scope="col"></th>
+      			<th scope="col"></th>
     		</tr>
   		</thead>
   		<tbody>
@@ -25,10 +29,15 @@
       			<td th:text="${livro?.name}"></td>
       			<td th:text="${livro?.numberPages}"></td>
       			<td th:text="${livro?.author?.name}"></td>
-      			<td><a href="/edit">Alterar</a></td>
-      			<td><a href="#">Excluir</a></td>
+      			<td><a class="btn btn-warning" href="#" th:href="@{'/livros/edit/'+ ${livro.id}}">Alterar</a></td>
+      			<td><a class="btn btn-danger" href="#" th:href="@{'/livros/delete/' + ${livro.id}}">Excluir</a></td>
     		</tr>
   		</tbody>
 </table>
+
+<script type="text/javascript" th:src="@{/webjars/jquery/3.1.1/jquery.min.js}" ></script>
+<script type="text/javascript" th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.js}" ></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}" ></script>
+
 </body>
 </html>

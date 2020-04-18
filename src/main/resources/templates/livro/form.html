@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  	layout:decorate="layout">
+<head>
+<meta charset="UTF-8" />
+<title>Livros</title>
+
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap-theme.min.css}" />
+	<link rel="stylesheet" th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.css}" />
+</head>
+<body>
+<form method="post" action="#" th:action="@{/livros/create}" th:object="${livro}">
+	<input type="hidden" th:field="*{id}" />
+	<div class="form-group">
+    Nome: <input class="form-control" type="text" th:field="*{name}"><br>
+    </div>
+    <div class="form-group">
+    Quantidade Páginas: <input class="form-control" type="text" th:field="*{numberPages}"><br>
+    </div>
+    <div class="form-group">
+    Autor: <select class="form-control" th:field="*{author}">
+        	<option value="">Selecione o Autor</option>
+        	<option th:each="autor : ${autores}" th:value="${autor.id}" th:utext="${autor.name} " selected="selected"></option>
+    	   </select><br>
+    </div>
+    <input class="btn btn-primary" type="submit">
+</form>
+
+<script type="text/javascript" th:src="@{/webjars/jquery/3.1.1/jquery.min.js}" ></script>
+<script type="text/javascript" th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.js}" ></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}" ></script>
+</body>
+</html>
