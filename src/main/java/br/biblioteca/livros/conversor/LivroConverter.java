@@ -1,5 +1,7 @@
 package br.biblioteca.livros.conversor;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,6 +15,9 @@ public class LivroConverter {
 		dto.setTitulo(livro.getName());
 		dto.setPaginas((int)livro.getNumberPages());
 		dto.setAutor(livro.getAuthor() != null ? livro.getAuthor().getName() : null);
+		dto.setAvaliacoes(livro.getAvaliacoes().size() > 0 
+				? AvaliacaoConverter.toDTO(livro.getAvaliacoes()) 
+				: Arrays.asList());
 		
 		return dto;
 	}

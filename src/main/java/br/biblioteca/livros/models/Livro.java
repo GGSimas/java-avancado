@@ -1,5 +1,8 @@
 package br.biblioteca.livros.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -29,6 +33,9 @@ public class Livro {
 	@JoinColumn(name = "author_id")
 	private Autor author;
 
+	@OneToMany(mappedBy = "book")
+	private List<Avaliacao> avaliacoes = new ArrayList<Avaliacao>();
+	
 	public long getId() {
 		return id;
 	}
@@ -60,6 +67,16 @@ public class Livro {
 	public void setAuthor(Autor author) {
 		this.author = author;
 	}
+
+	public List<Avaliacao> getAvaliacoes() {
+		return avaliacoes;
+	}
+
+	public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+		this.avaliacoes = avaliacoes;
+	}
+
+
 	
 	
 }
